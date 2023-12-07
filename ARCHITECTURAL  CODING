@@ -1,0 +1,38 @@
+import matplotlib.pyplot as plt
+from mpl_toolkits.mplot3d.art3d import Poly3DCollection
+
+fig = plt.figure()
+ax = fig.add_subplot(111, projection='3d')
+
+# Define building vertices (x, y, z)
+building = [
+    [0, 0, 0],
+    [0, 0, 10],
+    [10, 0, 10],
+    [10, 0, 0],
+    [0, 5, 0],
+    [0, 5, 10],
+    [10, 5, 10],
+    [10, 5, 0]
+]
+
+# Define building faces
+verts = [
+    [building[0], building[1], building[5], building[4]],
+    [building[0], building[3], building[7], building[4]],
+    [building[2], building[3], building[7], building[6]],
+    [building[2], building[1], building[5], building[6]],
+    [building[0], building[1], building[2], building[3]],
+    [building[4], building[5], building[6], building[7]]
+]
+
+# Plot building
+ax.add_collection3d(Poly3DCollection(verts, facecolors='cyan', linewidths=1, edgecolors='black'))
+
+# Set plot parameters
+ax.set_xlabel('X axis')
+ax.set_ylabel('Y axis')
+ax.set_zlabel('Z axis')
+ax.set_title('Basic Building Architecture')
+
+plt.show()
